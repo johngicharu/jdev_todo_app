@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <h1 className="text-center my-3">JDev Todo App</h1>
       </header>
-      <Todos />
+      <Todos className="container" />
     </div>
   );
 }

@@ -148,16 +148,16 @@ class Todos extends Component {
               <div className="card card-body my-4">
                 <h3 className="text-muted mb-3">Map</h3>
                 <div className=" row col-sm-12">
-                  <div className="col-sm-2 rounded-lg bg-success mx-2 text-center text-white py-2">
+                  <div className="col-sm-2 rounded-lg bg-success mx-2 text-center text-white py-2 mb-2">
                     done
                   </div>
-                  <div className="col-sm-2 rounded-lg bg-danger mx-2 text-center text-white py-2">
+                  <div className="col-sm-2 rounded-lg bg-danger mx-2 text-center text-white py-2 mb-2">
                     late
                   </div>
-                  <div className="col-sm-2 rounded-lg bg-primary mx-2 text-center text-white py-2">
+                  <div className="col-sm-2 rounded-lg bg-primary mx-2 text-center text-white py-2 mb-2">
                     new
                   </div>
-                  <div className="col-sm-2 rounded-lg bg-info mx-2 text-center text-white py-2">
+                  <div className="col-sm-2 rounded-lg bg-info mx-2 text-center text-white py-2 mb-2">
                     new Habit
                   </div>
                   <div className="row col-sm-12 mt-4">

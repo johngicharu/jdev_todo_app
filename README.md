@@ -1,4 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## JDEV_TODO_APP
+This project was created uses the following packages:
+  * create-react-app
+  * momentjs
+  * react-moment
+
+## Description
+This is a simple todo list app but has a number of extra features. Using this simple react app, you can: <br />
+  * Create Todo List Items,
+  * Mark them as complete
+  * Mark them as habits
+  * Redo items by clicking once more on the mark as done/complete icon
+  * Delete Them.
+ 
+Once an item has been marked as a habit, its due date resets to the end of the day, implying that you have to complete the action by the end of the day. 
+
+The app offers a map that indicates the different actions one can make such as delete, mark habit and mark done/complete. 
+It also defines the colors of the different items for clarification. Primarily, red is for todo items that are past their due date, green is for items that have been completed, teal for habits, and blue for normal todos.
+
+The App uses validation, in that it does not allow you to add empty todo list items. It also renders content conditionally and offers messages in return. Users have to confirm whether or not items should be deleted which is an extra measure to prevent one from deleting their todo list items.
+
+Currently, the app stores its data on local storage but will later be updated to store its data on a database allowing users to login and update their todo lists as they please. This will also add extra features such as authentication to differentiate users. In localstorage, the app uses the key, **jdev_todos**, to prevent it from overwriting other todo lists that users might be using.
 
 ## Available Scripts
 
@@ -6,63 +27,11 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the app in the development mode on port 3000.<br />
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Hope you enjoy, feel free to clone the app and make your own changes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

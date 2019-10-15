@@ -7,6 +7,7 @@
   max-height: 100vh;
   width: 100%;
   overflow-y: scroll;
+  padding: 6% 0;
 }
 
 .jdev_modal::after {

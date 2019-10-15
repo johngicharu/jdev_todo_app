@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import AddTodo from "./AddTodo";
 import TodoItems from "./TodoItems";
-import moment from "moment";
+import Modal from "./common/Modal";
 
 class Todos extends Component {
   state = {
+    isNewUser: true,
     todoEmpty: false,
     todo: {
       todo: "",
@@ -22,6 +23,17 @@ class Todos extends Component {
       });
     } else {
       window.localStorage.setItem("jdev_todos", JSON.stringify([]));
+    }
+
+    if (window.localStorage.getItem("jdev_isNewUser") !== null) {
+      this.setState({
+        isNewUser: JSON.parse(window.localStorage.getItem("jdev_isNewUser"))
+      });
+    } else {
+      window.localStorage.setItem(
+        "jdev_isNewUser",
+        JSON.stringify(this.state.isNewUser)
+      );
     }
   }
 
@@ -89,10 +101,9 @@ class Todos extends Component {
         todo.isHabit = !todo.isHabit;
       }
       if (todo.isHabit) {
-        const tomorrow = moment()
-          .add(1, "day")
-          .endOf("day");
+        const tomorrow = new Date().getTime() + 1 * 24 * 60 * 60 * 1000;
         todo.dueDate = tomorrow;
+        todo.createdDate = Date.now();
       }
       return todo;
     });
@@ -127,8 +138,62 @@ class Todos extends Component {
     }
   };
 
+  onNewUser = newUserState => {
+    window.localStorage.setItem("jdev_isNewUser", JSON.stringify(false));
+    this.setState({ isNewUser: newUserState ? false : false });
+  };
+
   render() {
     const { todos } = this.state;
+    const mapModal = (
+      <div className="card card-body my-4">
+        <div className="row col-sm-12">
+          <h4>Welcome</h4>
+          <p>
+            This is a simple to-do list with a few extra features. These include
+            the ability to create habits and redo them on a daily basis. You can
+            mark to-do items as complete or delete them. Once marked as
+            complete, you have the option of redoing the to-do item. Below is a
+            simple map for the main colors and icons used in the app.
+          </p>
+        </div>
+        <h4 className="text-muted mb-3">Map</h4>
+        <div className=" row col-sm-12">
+          <div className="col-sm-3 rounded-lg bg-success mx-2 text-center text-white py-2 mb-2">
+            done
+          </div>
+          <div className="col-sm-3 rounded-lg bg-danger mx-2 text-center text-white py-2 mb-2">
+            late
+          </div>
+          <div className="col-sm-3 rounded-lg bg-primary mx-2 text-center text-white py-2 mb-2">
+            new
+          </div>
+          <div className="col-sm-3 rounded-lg bg-info mx-2 text-center text-white py-2 mb-2">
+            new Habit
+          </div>
+          <div className="row col-sm-12 mt-4">
+            <div className="col-sm-4">
+              <p className="d-flex">
+                <small className="icon-ok" />{" "}
+                <span className="ml-2">Mark Done</span>
+              </p>
+            </div>
+            <div className="col-sm-4">
+              <p className="d-flex">
+                <small className="icon-trash" />{" "}
+                <span className="ml-2">Delete</span>
+              </p>
+            </div>
+            <div className="col-sm-4">
+              <p className="d-flex">
+                <small className="icon-heart" />{" "}
+                <span className="ml-2">Mark Habit</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
     return (
       <div>
         <h1 className="row mb-3">Add Todo</h1>
@@ -145,43 +210,13 @@ class Todos extends Component {
         <div className="card card-body">
           {todos.length !== 0 ? (
             <>
-              <div className="card card-body my-4">
-                <h3 className="text-muted mb-3">Map</h3>
-                <div className=" row col-sm-12">
-                  <div className="col-sm-2 rounded-lg bg-success mx-2 text-center text-white py-2 mb-2">
-                    done
-                  </div>
-                  <div className="col-sm-2 rounded-lg bg-danger mx-2 text-center text-white py-2 mb-2">
-                    late
-                  </div>
-                  <div className="col-sm-2 rounded-lg bg-primary mx-2 text-center text-white py-2 mb-2">
-                    new
-                  </div>
-                  <div className="col-sm-2 rounded-lg bg-info mx-2 text-center text-white py-2 mb-2">
-                    new Habit
-                  </div>
-                  <div className="row col-sm-12 mt-4">
-                    <div className="col-sm-4">
-                      <p className="d-flex">
-                        <small className="icon-ok" />{" "}
-                        <span className="ml-2">Mark Done</span>
-                      </p>
-                    </div>
-                    <div className="col-sm-4">
-                      <p className="d-flex">
-                        <small className="icon-trash" />{" "}
-                        <span className="ml-2">Delete</span>
-                      </p>
-                    </div>
-                    <div className="col-sm-4">
-                      <p className="d-flex">
-                        <small className="icon-heart" />{" "}
-                        <span className="ml-2">Mark Habit</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {this.state.isNewUser ? (
+                <Modal
+                  body={mapModal}
+                  title={"Confirm"}
+                  onCloseFunc={this.onNewUser}
+                />
+              ) : null}
               <div className="card card-body">
                 <button
                   onClick={this.clearAllTodos}

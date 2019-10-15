@@ -78,7 +78,7 @@ class TodoItems extends React.Component {
                 <div className="row mx-2">
                   {/* Check the dates and render the correct due date */}
                   {todo.dueDate !== "" ? (
-                    Date.now() < Date.parse(todo.dueDate) ? (
+                    Date.now() < parseInt(todo.dueDate) ? (
                       <p className="col-sm-12">
                         Due{" "}
                         <Moment to={todo.dueDate}>{todo.createdDate}</Moment>

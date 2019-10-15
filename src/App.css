@@ -7,6 +7,28 @@
   max-height: 100vh;
   width: 100%;
   overflow-y: scroll;
+  padding: 6% 0;
+}
+
+@media (min-width: 350px) {
+  .jdev_modal {
+    padding: 8% 0;
+  }
+}
+@media (min-width: 400px) {
+  .jdev_modal {
+    padding: 10% 0;
+  }
+}
+@media (min-width: 500px) {
+  .jdev_modal {
+    padding: 20% 0;
+  }
+}
+@media (min-width: 1000px) {
+  .jdev_modal {
+    padding: 6% 0;
+  }
 }
 
 .jdev_modal::after {
